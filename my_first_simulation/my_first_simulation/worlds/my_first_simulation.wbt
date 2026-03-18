@@ -1,0 +1,47 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation -0.11474544029715293 -0.004664099656544254 0.9933839791870042 3.222305687303363
+  position 1.5117283509176043 -0.07227077188313066 0.5233095733433295
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorTileSize 0.25 0.25
+  wallHeight 0.05
+}
+WoodenBox {
+  translation -0.438116 -0.443743 0.05
+  rotation 0.7071067811865476 0 0.7071067811865476 0
+  name "la cajita"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation 0.0565537 -0.362968 0.05
+  rotation 0 0 -1 0.990656
+  name "la cajita(2)"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation -0.339356 -0.083743 0.05
+  rotation 0 0 1 -0.523595307179586
+  name "la cajita(1)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+E-puck {
+  translation 0.27 -0.28 0
+  rotation 0 0 1 1.5708
+  controller "epuck_go_forward"
+}

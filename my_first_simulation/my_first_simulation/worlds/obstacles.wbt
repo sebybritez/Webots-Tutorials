@@ -1,0 +1,126 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation 0.47105862454022907 -0.49386812707629935 -0.7308885313810963 4.449270281565996
+  position -0.025404274069397173 -1.7210584142804015 3.6955852865237397
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation -0.438116 -0.443743 0.05
+  rotation 0.7071067811865476 0 0.7071067811865476 0
+  name "la cajita"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation 0.0565537 -0.362968 0.05
+  rotation 0 0 -1 0.990656
+  name "la cajita(2)"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation -0.339356 -0.083743 0.05
+  rotation 0 0 1 -0.523595307179586
+  name "la cajita(1)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+E-puck {
+  translation 0.26 -0.28 0
+  rotation 0 0 1 1.5708
+  controller "epuck_go_forward"
+}
+Solid {
+  translation 0.25 0 0.2
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.05
+        subdivision 2
+      }
+    }
+  ]
+  boundingObject USE BALL_GEOMETRY
+  physics Physics {
+  }
+}
+Solid {
+  translation 0.51 0 0.05
+  children [
+    DEF wall_shape Shape {
+      appearance PBRAppearance {
+        baseColor 0.333333 0.666667 1
+      }
+      geometry Box {
+        size 0.025 1.025 0.1
+      }
+    }
+  ]
+  name "wall"
+  boundingObject USE wall_shape
+}
+Solid {
+  translation -0.51 0 0.05
+  children [
+    DEF wall_shape Shape {
+      appearance PBRAppearance {
+        baseColor 0.333333 0.666667 1
+      }
+      geometry Box {
+        size 0.025 1.025 0.1
+      }
+    }
+  ]
+  name "wall(1)"
+  boundingObject USE wall_shape
+}
+Solid {
+  translation 2.03923e-08 0.51 0.05
+  rotation 0 0 1 -1.5707953071795862
+  children [
+    DEF wall_shape Shape {
+      appearance PBRAppearance {
+        baseColor 0.333333 0.666667 1
+      }
+      geometry Box {
+        size 0.025 1.025 0.1
+      }
+    }
+  ]
+  name "wall(2)"
+  boundingObject USE wall_shape
+}
+Solid {
+  translation 1.07061e-06 -0.52 0.05
+  rotation 0 0 1 -1.5707953071795862
+  children [
+    DEF wall_shape Shape {
+      appearance PBRAppearance {
+        baseColor 0.333333 0.666667 1
+      }
+      geometry Box {
+        size 0.025 1.025 0.1
+      }
+    }
+  ]
+  name "wall(3)"
+  boundingObject USE wall_shape
+}

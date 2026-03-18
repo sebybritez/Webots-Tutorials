@@ -1,0 +1,237 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "../protos/FourWheelsRobot.proto"
+
+WorldInfo {
+  basicTimeStep 16
+  physicsDisableTime 0.5
+}
+Viewpoint {
+  orientation 0.2398278217162024 0.7292867901813235 -0.6407990274632785 0.9482899066347223
+  position -2.6296501570585313 0.9739369117507076 2.1470895662852465
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation -0.438116 -0.443743 0.05
+  rotation 0.7071067811865476 0 0.7071067811865476 0
+  name "la cajita"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation 0.0565537 -0.362968 0.05
+  rotation 0 0 -1 0.990656
+  name "la cajita(2)"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation -0.339356 -0.083743 0.05
+  rotation 0 0 1 -0.523595307179586
+  name "la cajita(1)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+Solid {
+  translation 0.51 0 0.05
+  children [
+    DEF wall_shape Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.333333 1
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 0.025 1.025 0.1
+      }
+    }
+  ]
+  name "wall"
+  boundingObject USE wall_shape
+}
+Solid {
+  translation -0.51 0 0.05
+  children [
+    USE wall_shape
+  ]
+  name "wall(1)"
+  boundingObject USE wall_shape
+}
+Solid {
+  translation 2.03923e-08 0.51 0.05
+  rotation 0 0 1 -1.5707953071795862
+  children [
+    USE wall_shape
+  ]
+  name "wall(2)"
+  boundingObject USE wall_shape
+}
+Solid {
+  translation 1.06041e-06 -0.51 0.05
+  rotation 0 0 1 -1.5707953071795862
+  children [
+    USE wall_shape
+  ]
+  name "wall(3)"
+  boundingObject USE wall_shape
+}
+Robot {
+  translation -0.04 0.23 0.04
+  children [
+    DistanceSensor {
+      translation 0.1 -0.03 0
+      rotation 0 0 1 -0.3
+      children [
+        DEF Ojito Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_right"
+      boundingObject USE Ojito
+      physics Physics {
+      }
+    }
+    DistanceSensor {
+      translation 0.1 0.03 0
+      rotation 0 0 1 0.3
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_left"
+      boundingObject USE Ojito
+      physics Physics {
+      }
+    }
+    DEF cuerpo Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.1 0.05
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.05 0.06 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.05 0.06 0
+        rotation 1 0 0 1.5708
+        children [
+          DEF Rueda1 Shape {
+            appearance PBRAppearance {
+              baseColor 0 1 0
+            }
+            geometry Cylinder {
+              height 0.02
+              radius 0.04
+            }
+          }
+        ]
+        boundingObject USE Rueda1
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.05 0.06 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint Solid {
+        translation 0.05 -0.06 0
+        rotation 1 0 0 1.5708
+        children [
+          USE Rueda1
+        ]
+        name "solid(1)"
+        boundingObject USE Rueda1
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor -0.05 0.06 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel3"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05000192442263276 0.060000048833835876 -2.849375532541905e-07
+        rotation 0.9999999999999999 3.0438793541153723e-09 3.0438681279749124e-09 1.5708000003314428
+        children [
+          USE Rueda1
+        ]
+        name "solid(2)"
+        boundingObject USE Rueda1
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor -0.05 -0.06 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel4"
+        }
+      ]
+      endPoint Solid {
+        translation -0.0499974 -0.06 0
+        rotation -1 8.678115109274295e-10 8.678083314960364e-10 4.712385309442199
+        children [
+          USE Rueda1
+        ]
+        name "solid(3)"
+        boundingObject USE Rueda1
+        physics Physics {
+        }
+      }
+    }
+  ]
+  boundingObject USE cuerpo
+  physics Physics {
+  }
+  controller "four_wheeled_collision_avoidance"
+}
+FourWheelsRobot {
+  translation 0 0.05 0.04
+}

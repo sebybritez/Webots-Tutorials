@@ -1,0 +1,176 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puckGroundSensors.proto"
+
+WorldInfo {
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation 0.374691105312331 -0.3596559358726195 -0.8545491111641353 4.547753957556762
+  position 0.2136171254242671 -1.9389648416098957 1.4992897532481084
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Solid {
+  translation 0 -0.27 0
+  children [
+    DEF Plano Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+      }
+      geometry Plane {
+      }
+    }
+  ]
+  name "solid(4)"
+  boundingObject USE Plano
+}
+Solid {
+  translation -0.37 0.03 -1.10112e-13
+  rotation -2.3464099999870814e-06 -2.3464099999870814e-06 0.9999999999944944 -1.5707953071795862
+  children [
+    DEF Carretera_1 Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "recta.png"
+          ]
+        }
+        metalness 0
+      }
+      geometry DEF Recta_1 Box {
+        size 0.15 0.3 0.0001
+      }
+    }
+  ]
+  name "solid(14)"
+}
+E-puck {
+  translation -0.467047 0.0341012 -0.000196528
+  rotation -0.00898619809407686 0.002769559412591697 0.9999557879148829 -0.07419530717958622
+  controller "e-puck_line"
+  groundSensorsSlot [
+    E-puckGroundSensors {
+    }
+  ]
+}
+Solid {
+  translation 0.05 -0.42 1e-05
+  children [
+    USE Carretera_1
+  ]
+  name "solid(3)"
+  boundingObject USE Recta_1
+}
+Solid {
+  translation 0.61 -0.43 0
+  children [
+    USE Carretera_1
+  ]
+  name "solid(11)"
+  boundingObject USE Recta_1
+}
+Solid {
+  translation 0.61 -0.13 0
+  children [
+    USE Carretera_1
+  ]
+  name "solid(12)"
+  boundingObject USE Recta_1
+}
+Solid {
+  translation -0.173563 0.0193778 0.0001
+  rotation 0 0 1 -0.523595307179586
+  children [
+    DEF curvaa Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "curva_30.png"
+          ]
+        }
+        metalness 0
+      }
+      geometry Mesh {
+        url [
+          "../meshes/Pista.obj"
+        ]
+      }
+    }
+  ]
+}
+Solid {
+  translation -0.0426756 -0.0485338 0.0001
+  rotation 0 0 1 -1.047195307179586
+  children [
+    USE curvaa
+  ]
+  name "solid(1)"
+}
+Solid {
+  translation 0.0429342 -0.177498 0.0001
+  rotation 0 0 -1 1.5708
+  children [
+    USE curvaa
+  ]
+  name "solid(2)"
+}
+Solid {
+  translation 0.0651479 -0.664852 0.0001
+  rotation 0 0 -1 -1.5707953071795862
+  children [
+    USE curvaa
+  ]
+  name "solid(5)"
+  boundingObject USE curvaa
+}
+Solid {
+  translation 0.142464 -0.786299 0.0001
+  rotation 0 0 1 2.09441
+  children [
+    USE curvaa
+  ]
+  name "solid(6)"
+  boundingObject USE curvaa
+}
+Solid {
+  translation 0.273074 -0.859015 0.0001
+  rotation 0 0 1 2.61799
+  children [
+    USE curvaa
+  ]
+  name "solid(7)"
+  boundingObject USE curvaa
+}
+Solid {
+  translation 0.417613 -0.847201 0.0001
+  rotation 0 0 1 3.14159
+  children [
+    USE curvaa
+  ]
+  name "solid(8)"
+  boundingObject USE curvaa
+}
+Solid {
+  translation 0.544549 -0.769448 0.0001
+  rotation 0 0 1 -2.6179953071795863
+  children [
+    USE curvaa
+  ]
+  name "solid(9)"
+  boundingObject USE curvaa
+}
+Solid {
+  translation 0.608756 -0.633102 0.0001
+  rotation 0 0 1 -2.094395307179586
+  children [
+    USE curvaa
+  ]
+  name "solid(10)"
+  boundingObject USE curvaa
+}

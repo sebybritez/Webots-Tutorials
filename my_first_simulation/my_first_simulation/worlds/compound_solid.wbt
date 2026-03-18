@@ -1,0 +1,181 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+
+WorldInfo {
+  basicTimeStep 16
+  physicsDisableTime 0.5
+  contactProperties [
+    ContactProperties {
+      material2 "Mancuerna"
+      coulombFriction [
+        0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.28399476326818535 -0.4370832881432758 -0.8534079760947336 4.981722783586293
+  position -0.5545030497866819 -1.5645309939577943 1.4447504937761122
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 1 1
+}
+WoodenBox {
+  translation -0.438116 -0.443743 0.05
+  rotation 0.7071067811865476 0 0.7071067811865476 0
+  name "la cajita"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation 0.0565537 -0.362968 0.05
+  rotation 0 0 -1 0.990656
+  name "la cajita(2)"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation -0.339356 -0.083743 0.05
+  rotation 0 0 1 -0.523595307179586
+  name "la cajita(1)"
+  size 0.1 0.1 0.1
+  mass 0.2
+}
+E-puck {
+  translation 0.26 -0.28 0
+  rotation 0 0 1 1.5708
+  controller "epuck_avoid_collision"
+}
+Solid {
+  translation 0.25 0 0.2
+  rotation -0.30054600006401627 -0.12449700002651787 0.9456070002014143 -0.825725307179586
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "descarga.jpg"
+          ]
+        }
+        metalness 0
+      }
+      geometry DEF BALL_GEOMETRY Sphere {
+        radius 0.05
+        subdivision 2
+      }
+    }
+  ]
+  boundingObject USE BALL_GEOMETRY
+  physics Physics {
+  }
+}
+Solid {
+  translation 0.51 0 0.05
+  children [
+    DEF wall_shape Shape {
+      appearance PBRAppearance {
+        baseColor 0 0.333333 1
+        roughness 0.5
+        metalness 0
+      }
+      geometry Box {
+        size 0.025 1.025 0.1
+      }
+    }
+  ]
+  name "wall"
+  boundingObject USE wall_shape
+}
+Solid {
+  translation -0.51 0 0.05
+  children [
+    USE wall_shape
+  ]
+  name "wall(1)"
+  boundingObject USE wall_shape
+}
+Solid {
+  translation 2.03923e-08 0.51 0.05
+  rotation 0 0 1 -1.5707953071795862
+  children [
+    USE wall_shape
+  ]
+  name "wall(2)"
+  boundingObject USE wall_shape
+}
+Solid {
+  translation 1.06041e-06 -0.51 0.05
+  rotation 0 0 1 -1.5707953071795862
+  children [
+    USE wall_shape
+  ]
+  name "wall(3)"
+  boundingObject USE wall_shape
+}
+Solid {
+  translation -0.0099998 0 0.21
+  rotation 0 1 0 -1.5707953071795862
+  children [
+    DEF Go Group {
+      children [
+        Pose {
+          translation 0 0 0.06
+          children [
+            DEF pesa Shape {
+              appearance PBRAppearance {
+                baseColor 1 0 0
+                metalness 0
+              }
+              geometry Sphere {
+                radius 0.03
+                subdivision 2
+              }
+            }
+          ]
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.666667 0 0
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.1
+            radius 0.01
+          }
+        }
+        Pose {
+          translation 0 0 -0.07
+          children [
+            USE pesa
+          ]
+        }
+      ]
+    }
+  ]
+  name "mancuerna"
+  contactMaterial "mancuerna"
+  boundingObject USE Go
+  physics Physics {
+    density -1
+    mass 2
+    centerOfMass [
+      0 0 -0.004390243902439028
+    ]
+    inertiaMatrix [
+      0.008304959349593497 0.008304959349593497 0.0006443902439024389
+      0 0 0
+    ]
+    damping Damping {
+    }
+  }
+  recognitionColors [
+    0.666667 0 0
+  ]
+}
